@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) SR1GT my copyright message. 2023-2023. All rights reserved.
+ */
+
 package com.os.demo;
 
 import java.text.SimpleDateFormat;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) SR1GT my copyright message. 2023-2023. All rights reserved.
+ */
+
 package com.os.demo;
 
 import java.util.ArrayList;
@@ -63,9 +67,8 @@ public class Folder {   // 文件夹类，使用二叉树
         return null;
     }
 
-    // 查看文件夹内容
-    public void show() {
-        System.out.print("当前目录：");
+    // 获取当前目录
+    public StringBuilder getCurrentDirectory() {
         Folder tmp = this;
         ArrayList<String> path = new ArrayList<>();
         while (tmp != null) {
@@ -77,7 +80,13 @@ public class Folder {   // 文件夹类，使用二叉树
         for (String name : path) {
             sb.append(name);
         }
-        System.out.println(sb.toString());
+        return sb;
+    }
+
+    // 查看文件夹内容
+    public void show() {
+        System.out.print("当前目录：");
+        System.out.println(this.getCurrentDirectory());
 
         System.out.print("文件夹：");
         for (Folder folder : this.getChildren()) {
@@ -87,7 +96,7 @@ public class Folder {   // 文件夹类，使用二叉树
 
         System.out.print("文件：");
         for (File file : this.getFiles()) {
-            System.out.print(file.getName() + "." + file.getType());
+            System.out.print(file.getName() + "." + file.getType() + " ");
         }
         System.out.println();
     }
@@ -241,13 +250,15 @@ public class Folder {   // 文件夹类，使用二叉树
             return;
         }
         for (int i = 1; ; i++) {
-            String newName = name + " (" + i + ")";
+            String newName = name + "(" + i + ")";
             if (this.selectFile(newName, type)==null) {
                 File file = new File();
                 file.setName(newName);
                 file.setType(type);
                 file.setSize(result.getSize());
                 file.setContent(result.getContent());
+                this.files.add(file);
+                System.out.println("文件" + name + "." + type + "复制结果为" + newName + "." + type);
                 return;
             }
         }
