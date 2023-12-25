@@ -273,9 +273,9 @@ public class Folder {   // 文件夹类，使用二叉树
         }
         System.out.println("原文件内容：" + result.getContent());
         System.out.println("**********警告：编辑文件仅支持单行字符串覆写操作**********");
-        System.out.println("输入新内容：");
+        System.out.print("输入新内容：");
         Scanner scanner = new Scanner(System.in);
-        String content = scanner.next();
+        String content = scanner.nextLine();
         System.out.println("保存中...");
         result.setContent(content);
         result.setSize(content.length());
